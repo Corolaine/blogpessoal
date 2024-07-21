@@ -84,13 +84,9 @@ public class UsuarioService {
 
                 // Retorna o Objeto preenchido
                 return usuarioLogin;
-
             }
-
         }
-
         return Optional.empty();
-
     }
 
     private String criptografarSenha(String senha) {

@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class Usuario {
 
     @NotNull(message = "O Atributo Usuário é Obrigatório!")
     @Email(message = "O Atributo Usuário deve ser um email válido!")
+    @Column(nullable = false, unique = true)
     private String usuario;
 
     @NotBlank(message = "O Atributo Senha é Obrigatório!")
@@ -43,7 +45,17 @@ public class Usuario {
     @JsonIgnoreProperties("usuario")
     private List<Postagem> postagem;
 
-    /* Insira os Getters and Setters */
+    public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.foto = foto;
+    }
+
+    public Usuario() { }
+
+    // Getters and Setters
 
     public Long getId() {
         return this.id;
