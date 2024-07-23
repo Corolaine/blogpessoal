@@ -44,10 +44,10 @@ public class Usuario {
     private String foto;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    @JsonIgnoreProperties("usuario")
+    @JsonIgnoreProperties("usuario") // Ignorar a propriedade "usuario" na serialização das postagens
     private List<Postagem> postagem;
 
-
+    // Construtores
     public Usuario(Long id, String nome, String usuario, String senha, String foto) {
         this.id = id;
         this.nome = nome;
@@ -58,8 +58,7 @@ public class Usuario {
 
     public Usuario() { }
 
-    // Getters and Setters
-
+    // Getters e Setters
     public Long getId() {
         return this.id;
     }
